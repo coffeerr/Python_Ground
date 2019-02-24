@@ -13,5 +13,5 @@
 
 ### 3、实现
 
-![](#001\#001_1.JPG)
+![](https://github.com/coffeerr/Python_Ground/blob/master/%23001/%23001_1.JPG)
 
