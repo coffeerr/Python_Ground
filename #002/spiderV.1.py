@@ -36,7 +36,6 @@ class allBooks:
         :param url:当前页的链接
         :return: item包含一本书的信息
         '''
-        print(url)
         booklist = []
         text = requests.get(url, headers=self.headers).text
         time.sleep(0.5)
@@ -93,19 +92,23 @@ class allBooks:
 
     # #把数据存入mysql
 if __name__ == '__main__':
-    # start = time.time()
-    # print('----------开始爬取----------')
+    page = 10
+    now = 0
+    start = time.time()
+    print('----------开始爬取----------')
     a = allBooks()
     genre = a.get_genre_url()
-    for i in genre:
-        print(i)
-        ss = a.add_real_url(i)
-        for page in range(1):
-            url = ss + '?start={}&type=T'.format(page*20)
-            list = a.get_one_page(url,i)
+    len_genre = len(genre)
+    for g in genre:
+        ss = a.add_real_url(g)
+        for p in range(page):
+            url = ss + '?start={}&type=T'.format(p*20)
+            list = a.get_one_page(url,g)
             for book in list:
-                print(book)
+                now+=1
                 a.write_to_mysql(book)
-    # end = time.time()
-    # print('----------爬取结束----------')
-    # print('爬取时间：'+str(end-start))
+                print('\r'+'下载进度[%s]：%s%.2f%%' % (g,'>'*int(now*200/(page*len_genre*20)),float(100*now/(page*len_genre*20))),end='')
+                #print(int(now*50/(page*len_genre)))
+    end = time.time()
+    print('----------爬取结束----------')
+    print('爬取时间：'+str(end-start))
