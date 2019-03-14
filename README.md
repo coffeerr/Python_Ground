@@ -91,3 +91,23 @@ V 0.1 爬取[花瓣旅行](http://huaban.com/favorite/travel_places/)分类下�
 #### :point_right:3、实现
 
 #### :point_right:4、GTD
+
+---
+
+### ⭐️005||简单代理词
+
+#### 👉1、需求
+
+​	根据西刺网代理搭建自己的代理池
+
+#### 👉2、环境
+
+​	Python 3.6x
+
+​	mysql 5.5.6
+
+#### 👉3、实现
+
+#### 👉4、GTD
+
+### 
